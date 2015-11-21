@@ -1,0 +1,96 @@
+
+This is the layout for a key press movement
+You should be able to see STARTING @ POINT 1
+        (1) there is a listen for key press
+        (2) if key press, find out if key press is and arrow key
+        (3) if key is pressed and arrow then switch on the 4 keys
+        (4) change image to face that way (even if the monkey cant move it will look that way)
+        (5.1) if move will  cause monkey to move off screen !Don't Move, pass...
+        (5.2) if monkey can move then move image to new Dimension
+        (6) once monkey moves is he at a Dimension that is shared with banana
+        (7.1) if yes collect....
+        (7.1) if not pass..
+        (8) start loop over
+
+
+def gameRun(screen, hero, screenMap, restrictedCordsList, eventCordsDict, enemiesLevelCordsList):
+
+    gameClock = pygame.time.Clock()
+        # blit meand render or draw in python
+    screen.blit(hero.DOWN1, (hero.displayx, hero.displayy))
+    screen.blit(screenMap, (hero.x, hero.y))
+
+        gameClock.tick(3)
+
+
+
+--->>> PONIT 1
+
+
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_DOWN:
+                hero.face = "DOWN"
+
+                if (hero.x, hero.y - 16) not in restrictedCordsList:
+                    hero.y -= 16
+
+                    for key, value in eventCordsDict.items():
+                        if key == (hero.x, hero.y):
+                            (eval(eventCordsDict.get(key)))(screen, hero)
+
+                    screen.blit(screenMap, (hero.x, hero.y))
+
+
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_UP:
+                hero.face = "UP"
+
+                if (hero.x, hero.y + 16) not in restrictedCordsList:
+                    hero.y += 16
+
+                    for key, value in eventCordsDict.items():
+                        if key == (hero.x, hero.y):
+                            (eval(eventCordsDict.get(key)))(screen, hero)
+
+                    screen.blit(screenMap, (hero.x, hero.y))
+
+
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_LEFT:
+                hero.face = "LEFT"
+
+                if (hero.x + 16, hero.y) not in restrictedCordsList:
+                    hero.x += 16
+
+                    for key, value in eventCordsDict.items():
+                        if key == (hero.x, hero.y):
+                            (eval(eventCordsDict.get(key)))(screen, hero)
+
+                    screen.blit(screenMap, (hero.x, hero.y))
+
+
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+                hero.face = "RIGHT"
+
+                if (hero.x - 16, hero.y) not in restrictedCordsList:
+                    hero.x -= 16
+
+                    for key, value in eventCordsDict.items():
+                        if key == (hero.x, hero.y):
+                            (eval(eventCordsDict.get(key)))(screen, hero)
+
+                    screen.blit(screenMap, (hero.x, hero.y))
+
+                        ### HELPER SCRIPT
+                        # this will help to locate the Dimension of the monkey
+                        # if needed
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_a:
+                print "(%s, %s)," % (hero.x, hero.y)
+
+            pygame.display.update()
+
+
+
+
+        hero.heroBlinkStep(screen)
+        pygame.display.update()

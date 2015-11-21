@@ -1,0 +1,94 @@
+PREPARE
+(1) Populate Assets for Project
+
+        (a) title page
+                Done Anthony 11-19
+
+        (b) banana image
+                Done Anthony 11-19
+
+        (c) monkey(sprite)
+
+            (i) get tile set
+                    Done Anthony 11-19
+
+            (ii) slice tile set to same size
+                    Done Anthony 11-20
+
+        (d) game play background
+                Done Anthony 11-19
+
+START APPLICATION
+
+GUI     (1) Create JFrame sandbox = new JFrame()
+            Done Anthony 11-19
+
+GUI     (2) Create title screen background
+            Done Anthony 11-19
+
+LOGIC   (3) Create time delay for title screen
+            Thread.sleep(1000);
+            commented out for development
+            Started Anthony 12-4
+
+GUI     (4) Create enter game text button
+            with hover and click actions
+            Done Anthony 11-20
+
+START GAME
+
+GUI     (1) create background pane
+                Done Anthony 11-20
+
+GUI     (2) Render Bananas
+                JLayeredPane.add(banana, new Integer(#));
+                Joel ??
+
+GUI     (4) Render Banana counter and label
+                JLayeredPane.add(banana-label, new Integer(#));
+                JLayeredPane.add(banana-count, new Integer(#));
+                Joel ??
+
+GUI     (5.1) Render Sprite(monkey)
+                JLayeredPane.add(sprite, new Integer(#));
+                Done Anthony 11-21
+
+LOGIC   (5.2) Set sprite restricted movement bounds so it cannot move outside the given area
+                Bounds: top[60], right[940], bottom[585], left[65]
+                Kyle ??
+
+LOGIC   (6) Sprite movement with keypress
+                Resource file: GamePlayTemplate
+                Done Anthony 11-21
+
+PLAY GAME
+
+LOGIC   (1) Compare Sprite-Dimension to Banana-Dimension
+                                        Point p = sprite.getBounds();
+                                        if (JLayeredPane.getComponentAt(p) != null){...
+
+LOGIC   (2) Update banana count
+                                        // collect banana to increase count
+                ??
+
+LOGIC   (3) Remove banana
+                                        // JLayeredPane.remove(banana);
+
+LOGIC   (4) Set up revalidation 
+                                        // JLayeredPane.revalidate();
+                Started Anthony 11-21
+
+LOGIC   (5) Check for more banana
+                                        // (A) look at JLayeredPane for banana JComponent, or
+                                        // (B) look at banana score == max possibale score
+                                        // if more banana's LOOP else END GAME
+                                        ...};
+
+END GAME
+
+GUI     (1) Create summary screen
+            with "Play Again" and "Exit" buttons
+                ??
+
+LOGIC   (2) Create actions for buttons
+                ??
