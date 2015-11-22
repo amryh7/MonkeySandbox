@@ -33,7 +33,7 @@ public class RunTitle {
             // set standard defaults for JFrame
             sandbox.setUndecorated(true); // removing Window default  system border
             sandbox.setLayout(null); // setting layout manager to null so componets can be placed anywhere on the screen
-            sandbox.setSize( titlePanel.getImageWidth() + 7 , titlePanel.getImageHeight() ); // set JFrame size to title image width/height
+            sandbox.setSize( titlePanel.getImageWidth() , titlePanel.getImageHeight() ); // set JFrame size to title image width/height
                 // calculating screen center
                 Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
                 Point middle = new Point( screenSize.width / 2 , screenSize.height / 2 );
@@ -44,9 +44,9 @@ public class RunTitle {
             sandbox.setDefaultCloseOperation(EXIT_ON_CLOSE) ; // setting close button to exit application
             sandbox.setVisible(true); // setting window to be rendered
                         
-        AssetsSounds sounds = new AssetsSounds(); // create game sounds
-            Clip mainClip = sounds.getMainClip(); //getting sound for main game song
-            mainClip.start(); // staring main game song play
+//        AssetsSounds sounds = new AssetsSounds(); // create game sounds
+//            Clip mainClip = sounds.getMainClip(); //getting sound for main game song
+//            mainClip.start(); // staring main game song play
                         
                 
         layeredPane = sandbox.getLayeredPane(); // getting JLayeredPane to draw JComponents on top of each other
@@ -55,7 +55,7 @@ public class RunTitle {
             layeredPane.add( titlePanel , new Integer (1) ); // add titlePanel
                 
             
-        Thread.sleep(1000); // thread sleep before going forward; added for UX
+//        Thread.sleep(1000); // thread sleep before going forward; added for UX
 
         JLabel enterLabel = gameLabels.getEnterGameLabel();
         layeredPane.add( enterLabel, new Integer(2) ); // add 'Enter Game' JLabel

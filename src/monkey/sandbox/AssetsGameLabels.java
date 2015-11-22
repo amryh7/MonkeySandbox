@@ -25,6 +25,12 @@ public class AssetsGameLabels {
     Font exitGameFontPlain = new Font("Courier", Font.PLAIN, 20); // create new PLAIN font for non-hover state of JLabel
     Font exitGameFontBold = new Font("Courier", Font.BOLD, 20); // create new BOLD font for hover state of JLabel
     
+    final JLabel bananasLabel = new JLabel("Banana's Collected"); // create JLabel for 'Exit' text
+    Font bananasFontBold = new Font("Courier", Font.BOLD, 30); // create new BOLD font for state of JLabel
+    
+    final JLabel bananasCountLabel = new JLabel("0"); // create JLabel for 'Exit' text
+    Font bananasCountFontBold = new Font("Courier", Font.BOLD, 30); // create new BOLD font for state of JLabel
+    
     public AssetsGameLabels(){
         init(); // set up states of class.properties created above 
     }
@@ -41,6 +47,16 @@ public class AssetsGameLabels {
         exitGameLabel.setForeground(Color.red); // setting !!! font color !!!; foreground is font
         exitGameLabel.setBounds(900, 0  , 300, 100); // .setBounds( int x , int y , int width , int height )
             exitGameLabelAction(); // setting mouseClicked/mouseEntered/mouseExited actions for JLabel
+        // setting up bananasLabel
+        bananasLabel.setFont(bananasFontBold); // setting to font from above
+        bananasLabel.setForeground(Color.CYAN); // setting !!! font color !!!; foreground is font
+        bananasLabel.setBounds(350, 5  , 300, 25); // .setBounds( int x , int y , int width , int height )
+            bananasLabelAction(); // setting mouseClicked/mouseEntered/mouseExited actions for JLabel
+        // setting up bananasCountLabel
+        bananasCountLabel.setFont(bananasCountFontBold); // setting to font from above
+        bananasCountLabel.setForeground(Color.CYAN); // setting !!! font color !!!; foreground is font
+        bananasCountLabel.setBounds(650, 5  , 75, 25); // .setBounds( int x , int y , int width , int height )
+            bananasCountLabelAction(); // setting mouseClicked/mouseEntered/mouseExited actions for JLabel
         
     }
 
@@ -95,6 +111,44 @@ public class AssetsGameLabels {
     public JLabel getExitGameLabel() {
         return exitGameLabel;
     }
-
     
+    // setting actions for bananasLabel JLabel
+    private void bananasLabelAction() {
+        exitGameLabel.addMouseListener(new MouseListener(){
+                @Override // not implemented
+            public void mouseClicked(MouseEvent e) {}
+                @Override // not implemented
+            public void mousePressed(MouseEvent e) {}
+                @Override // not implemented
+            public void mouseReleased(MouseEvent e) {}
+                @Override // not implemented
+            public void mouseEntered(MouseEvent e) {}
+                @Override // not implemented
+            public void mouseExited(MouseEvent e) {}
+        });
+    }
+    
+    public JLabel getBananasLabel() {
+        return bananasLabel;
+    }
+    
+    // setting actions for bananasLabel JLabel
+    private void bananasCountLabelAction() {
+        exitGameLabel.addMouseListener(new MouseListener(){
+                @Override // not implemented
+            public void mouseClicked(MouseEvent e) {}
+                @Override // not implemented
+            public void mousePressed(MouseEvent e) {}
+                @Override // not implemented
+            public void mouseReleased(MouseEvent e) {}
+                @Override // not implemented
+            public void mouseEntered(MouseEvent e) {}
+                @Override // not implemented
+            public void mouseExited(MouseEvent e) {}
+        });
+    }
+    
+    public JLabel getBananasCountLabel() {
+        return bananasCountLabel;
+    }
 }

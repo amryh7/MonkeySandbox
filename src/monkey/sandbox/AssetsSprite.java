@@ -25,9 +25,6 @@ public class AssetsSprite {
     final static Icon spriteRightO = new ImageIcon(spriteRightOFile);
         private final static String spriteRightTFile = "src/assets/sprites/right2.png";
     final static Icon spriteRightT = new ImageIcon(spriteRightTFile);
-    
-    private BufferedImage image;
-    private ImageIcon icon;
         
     private int spriteBoundsX = 800;
     private int spriteBoundsY = 550;
