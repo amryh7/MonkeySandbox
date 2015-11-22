@@ -42,12 +42,12 @@ GUI     (1) create background pane
 
 GUI     (2) Render Bananas
                 JLayeredPane.add(banana, new Integer(#));
-                Joel ??
+                Started Anthony 11-21
 
 GUI     (4) Render Banana counter and label
                 JLayeredPane.add(banana-label, new Integer(#));
                 JLayeredPane.add(banana-count, new Integer(#));
-                Joel ??
+                Started Anthony 11-21
 
 GUI     (5.1) Render Sprite(monkey)
                 JLayeredPane.add(sprite, new Integer(#));
@@ -55,25 +55,31 @@ GUI     (5.1) Render Sprite(monkey)
 
 LOGIC   (5.2) Set sprite restricted movement bounds so it cannot move outside the given area
                 Bounds: top[60], right[940], bottom[585], left[65]
-                Kyle ??
+                Done Anthony 11-21
 
 LOGIC   (6) Sprite movement with keypress
                 Resource file: GamePlayTemplate
                 Done Anthony 11-21
+GUI     (7.1) Render clock
+                at bottom, opposite of banana's collected label
+                ???
+LOGIC   (7.2) Set clock operations
+               start when game starts and stops when last banana is collected
+               this will give a 'game' feel as you compete to see who can get the lowest time
 
 PLAY GAME
 
 LOGIC   (1) Compare Sprite-Dimension to Banana-Dimension
                                         Point p = sprite.getBounds();
                                         if (JLayeredPane.getComponentAt(p) != null){...
-
+                Done Anthony 11-21
 LOGIC   (2) Update banana count
                                         // collect banana to increase count
-                ??
+                Done Anthony 11-21
 
 LOGIC   (3) Remove banana
                                         // JLayeredPane.remove(banana);
-
+                Done Anthony 11-21
 LOGIC   (4) Set up revalidation 
                                         // JLayeredPane.revalidate();
                 Started Anthony 11-21
@@ -83,7 +89,7 @@ LOGIC   (5) Check for more banana
                                         // (B) look at banana score == max possibale score
                                         // if more banana's LOOP else END GAME
                                         ...};
-
+                ???
 END GAME
 
 GUI     (1) Create summary screen
