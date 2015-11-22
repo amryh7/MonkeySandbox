@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JLabel;
+import static monkey.sandbox.RunTitle.titlePanel;
 
 // Create game lables object
 // (1) coins count label
@@ -25,11 +26,26 @@ public class AssetsGameLabels {
     Font exitGameFontPlain = new Font("Courier", Font.PLAIN, 20); // create new PLAIN font for non-hover state of JLabel
     Font exitGameFontBold = new Font("Courier", Font.BOLD, 20); // create new BOLD font for hover state of JLabel
     
+    private JLabel escapeLabel = new JLabel("'ESC' - exit"); // create JLabel for 'Exit' text
+    Font escapeLabelFontPlain = new Font("Courier", Font.PLAIN, 10); // create new BOLD font for state of JLabel
+    
     final JLabel bananasLabel = new JLabel("Banana's Collected"); // create JLabel for 'Exit' text
     Font bananasFontBold = new Font("Courier", Font.BOLD, 30); // create new BOLD font for state of JLabel
     
     final JLabel bananasCountLabel = new JLabel("0"); // create JLabel for 'Exit' text
     Font bananasCountFontBold = new Font("Courier", Font.BOLD, 30); // create new BOLD font for state of JLabel
+    
+    private JLabel clockLabel = new JLabel("Time Passed "); // create JLabel for 'Exit' text
+    Font clockLabelFontBold = new Font("Courier", Font.BOLD, 30); // create new BOLD font for state of JLabel
+    
+    private JLabel clockCountLabel = new JLabel("0"); // create JLabel for 'Exit' text
+    Font clockCountLabelFontBold = new Font("Courier", Font.BOLD, 30); // create new BOLD font for state of JLabel
+    
+    private final JLabel exitLabelO = new JLabel("Congragulation!!"); // create JLabel for 'Exit' text
+    private final JLabel exitLabelT = new JLabel("You Collected"); // create JLabel for 'Exit' text
+    private final JLabel exitLabelH = new JLabel(); // create JLabel for 'Exit' text
+    private final JLabel exitLabelF = new JLabel(); // create JLabel for 'Exit' text
+    Font exitLabelFontBold = new Font("Courier", Font.BOLD, 78); // create new BOLD font for state of JLabel
     
     public AssetsGameLabels(){
         init(); // set up states of class.properties created above 
@@ -51,12 +67,38 @@ public class AssetsGameLabels {
         bananasLabel.setFont(bananasFontBold); // setting to font from above
         bananasLabel.setForeground(Color.CYAN); // setting !!! font color !!!; foreground is font
         bananasLabel.setBounds(350, 5  , 300, 25); // .setBounds( int x , int y , int width , int height )
-            bananasLabelAction(); // setting mouseClicked/mouseEntered/mouseExited actions for JLabel
         // setting up bananasCountLabel
         bananasCountLabel.setFont(bananasCountFontBold); // setting to font from above
         bananasCountLabel.setForeground(Color.CYAN); // setting !!! font color !!!; foreground is font
         bananasCountLabel.setBounds(650, 5  , 75, 25); // .setBounds( int x , int y , int width , int height )
-            bananasCountLabelAction(); // setting mouseClicked/mouseEntered/mouseExited actions for JLabel
+        // setting up clockLabel
+        clockLabel.setFont(clockLabelFontBold); // setting to font from above
+        clockLabel.setForeground(Color.CYAN); // setting !!! font color !!!; foreground is font
+        clockLabel.setBounds(370, 665  , 300, 25); // .setBounds( int x , int y , int width , int height )
+        // setting up clockCountLabel
+        clockCountLabel.setFont(clockCountLabelFontBold); // setting to font from above
+        clockCountLabel.setForeground(Color.CYAN); // setting !!! font color !!!; foreground is font
+        clockCountLabel.setBounds(565, 665  , 75, 25); // .setBounds( int x , int y , int width , int height )
+        // setting up escapeLabel
+        escapeLabel.setFont(escapeLabelFontPlain); // setting to font from above
+        escapeLabel.setForeground(Color.red); // setting !!! font color !!!; foreground is font
+        escapeLabel.setBounds(900, 665  , 75, 25); // .setBounds( int x , int y , int width , int height )
+        // setting up exitLabelO
+        exitLabelO.setFont(exitLabelFontBold); // setting to font from above
+        exitLabelO.setForeground(Color.red); // setting !!! font color !!!; foreground is font
+        exitLabelO.setBounds( 100 , 20 , titlePanel.getImageWidth(), titlePanel.getImageHeight() / 4); // .setBounds( int x , int y , int width , int height )
+        // setting up exitLabelT
+        exitLabelT.setFont(exitLabelFontBold); // setting to font from above
+        exitLabelT.setForeground(Color.red); // setting !!! font color !!!; foreground is font
+        exitLabelT.setBounds( 100 , 150 , titlePanel.getImageWidth(), titlePanel.getImageHeight() / 4); // .setBounds( int x , int y , int width , int height )
+        // setting up exitLabelH
+        exitLabelH.setFont(exitLabelFontBold); // setting to font from above
+        exitLabelH.setForeground(Color.red); // setting !!! font color !!!; foreground is font
+        exitLabelH.setBounds( 100 , 280 , titlePanel.getImageWidth(), titlePanel.getImageHeight() / 4); // .setBounds( int x , int y , int width , int height )
+        // setting up exitLabelF
+        exitLabelF.setFont(exitLabelFontBold); // setting to font from above
+        exitLabelF.setForeground(Color.red); // setting !!! font color !!!; foreground is font
+        exitLabelF.setBounds( 100 , 410 , titlePanel.getImageWidth(), titlePanel.getImageHeight() / 4); // .setBounds( int x , int y , int width , int height )
         
     }
 
@@ -112,43 +154,39 @@ public class AssetsGameLabels {
         return exitGameLabel;
     }
     
-    // setting actions for bananasLabel JLabel
-    private void bananasLabelAction() {
-        exitGameLabel.addMouseListener(new MouseListener(){
-                @Override // not implemented
-            public void mouseClicked(MouseEvent e) {}
-                @Override // not implemented
-            public void mousePressed(MouseEvent e) {}
-                @Override // not implemented
-            public void mouseReleased(MouseEvent e) {}
-                @Override // not implemented
-            public void mouseEntered(MouseEvent e) {}
-                @Override // not implemented
-            public void mouseExited(MouseEvent e) {}
-        });
-    }
-    
     public JLabel getBananasLabel() {
         return bananasLabel;
     }
     
-    // setting actions for bananasLabel JLabel
-    private void bananasCountLabelAction() {
-        exitGameLabel.addMouseListener(new MouseListener(){
-                @Override // not implemented
-            public void mouseClicked(MouseEvent e) {}
-                @Override // not implemented
-            public void mousePressed(MouseEvent e) {}
-                @Override // not implemented
-            public void mouseReleased(MouseEvent e) {}
-                @Override // not implemented
-            public void mouseEntered(MouseEvent e) {}
-                @Override // not implemented
-            public void mouseExited(MouseEvent e) {}
-        });
-    }
-    
     public JLabel getBananasCountLabel() {
         return bananasCountLabel;
+    }
+
+    public JLabel getExitLabelO() {
+        return exitLabelO;
+    }
+
+    public JLabel getExitLabelT() {
+        return exitLabelT;
+    }
+
+    public JLabel getExitLabelH() {
+        return exitLabelH;
+    }
+
+    public JLabel getExitLabelF() {
+        return exitLabelF;
+    }
+
+    public JLabel getClockLabel() {
+        return clockLabel;
+    }
+
+    public JLabel getClockCountLabel() {
+        return clockCountLabel;
+    }
+
+    public JLabel getEscapeLabel() {
+        return escapeLabel;
     }
 }

@@ -2,9 +2,12 @@ package monkey.sandbox;
 
 import java.awt.Component;
 import java.awt.Point;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JLabel;
+import javax.swing.Timer;
 import static monkey.sandbox.AssetsSprite.spriteDownO;
 import static monkey.sandbox.AssetsSprite.spriteLeftO;
 import static monkey.sandbox.AssetsSprite.spriteRightO;
@@ -21,25 +24,31 @@ public class RunGamePlay {
     int x, y;
     Point spriteCords;
     String s;
+    long timeStart;
+    long timeChange;
+    double elapsedSeconds;
     
     // method to handle everything that needs to happen during RunGamePlay
     public void playGame() throws InterruptedException {
         
         backgroundPlayPanel.setBounds( 0 , 0 , titlePanel.getImageWidth() , titlePanel.getImageHeight() ) ; // .setBounds( int x , int y , int width , int height )
-                layeredPane.add( backgroundPlayPanel , new Integer ( 1 ) ) ; // add backgroundPlayPanel
+                layeredPane.add( backgroundPlayPanel , new Integer(1) ) ; // add backgroundPlayPanel
         
         final AssetsSprite sprites = new AssetsSprite(); // create AssetsSprite class
         final JLabel sprite = sprites.getSprite(); // creating JLabel from AssetsSprite getSprite() method
-        layeredPane.add(sprite, new Integer ( 2 ) ) ; // add backgroundPlayPanel
+        layeredPane.add(sprite, new Integer(2) ) ; // add backgroundPlayPanel
         
-        final AssetsBananaLabels ABL = new AssetsBananaLabels();
+        final AssetsBananaLabels ABL = new AssetsBananaLabels(3);
         final JLabel[] bananasLabels = ABL.getBananas();
         for (JLabel j : bananasLabels){
-            layeredPane.add(j, new Integer ( 3 ) ) ; // add backgroundPlayPanel
+            layeredPane.add(j, new Integer(3) ) ; // add backgroundPlayPanel
         }
         
-        layeredPane.add(gameLabels.getBananasLabel(), new Integer ( 4 ) );
-        layeredPane.add(gameLabels.getBananasCountLabel(), new Integer ( 4 ) );
+        layeredPane.add(gameLabels.getBananasLabel(), new Integer(4) );
+        layeredPane.add(gameLabels.getBananasCountLabel(), new Integer(4) );
+        layeredPane.add(gameLabels.getClockLabel(), new Integer(4) );
+        layeredPane.add(gameLabels.getClockCountLabel(), new Integer(4) );
+        layeredPane.add(gameLabels.getEscapeLabel(), new Integer(4) );
         
         
         // revalidate/repaint so changes in sandbox layout will be sent to screen 
@@ -69,6 +78,9 @@ public class RunGamePlay {
                                     layeredPane.remove(c);
                                     s = String.valueOf(Integer.parseInt(gameLabels.getBananasCountLabel().getText()) + 1);
                                     gameLabels.getBananasCountLabel().setText(s);
+                                    if (layeredPane.getComponentCountInLayer(3) == 0){
+                                        RunTitle.setYes(false);
+                                    }
                                 }
                             }
 //                                    System.out.println(sprite.getLocation());
@@ -92,6 +104,9 @@ public class RunGamePlay {
                                     layeredPane.remove(c);
                                     s = String.valueOf(Integer.parseInt(gameLabels.getBananasCountLabel().getText()) + 1);
                                     gameLabels.getBananasCountLabel().setText(s);
+                                    if (layeredPane.getComponentCountInLayer(3) == 0){
+                                        RunTitle.setYes(false);
+                                    }
                                 }
                             }
 //                                    System.out.println(sprite.getLocation());
@@ -114,6 +129,9 @@ public class RunGamePlay {
                                     layeredPane.remove(c);
                                     s = String.valueOf(Integer.parseInt(gameLabels.getBananasCountLabel().getText()) + 1);
                                     gameLabels.getBananasCountLabel().setText(s);
+                                    if (layeredPane.getComponentCountInLayer(3) == 0){
+                                        RunTitle.setYes(false);
+                                    }
                                 }
                             }
 //                                    System.out.println(sprite.getLocation());
@@ -136,6 +154,9 @@ public class RunGamePlay {
                                     layeredPane.remove(c);
                                     s = String.valueOf(Integer.parseInt(gameLabels.getBananasCountLabel().getText()) + 1);
                                     gameLabels.getBananasCountLabel().setText(s);
+                                    if (layeredPane.getComponentCountInLayer(3) == 0){
+                                        RunTitle.setYes(false);
+                                    }
                                 }
                             }
 //                                    System.out.println(sprite.getLocation());
@@ -165,26 +186,31 @@ public class RunGamePlay {
                     //        new Point(65, 270),
                     //        new Point(65, 340), <<<--- don't forget to delete the last comma
                     //        };
-                    if (key == KeyEvent.VK_Q){
-                        System.out.println("new Point(" + sprite.getLocation().x + ", " + sprite.getLocation().y + "),");
-                    }
+//                    if (key == KeyEvent.VK_Q){
+//                        System.out.println("new Point(" + sprite.getLocation().x + ", " + sprite.getLocation().y + "),");
+//                    }
                 }
                 @Override // not implemented
             public void keyReleased(KeyEvent e) {}});
         
         RunTitle.setYes(true); // set while test value 'yes' to true
-        
+        timeStart = System.currentTimeMillis();
         // start main game loop
         while(yes){
-            
             Thread.sleep(300); // sleep for 3/10 of a second; added for UX
                                 //System.out.println(KeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner()); // test to print KeyEvent.KeyPressed
 
             AssetsSprite.spriteBlinkStep(); // changes sprite image from left foot to righe foot to create movement; added for UX
-
+            
+            timeChange = System.currentTimeMillis() - timeStart;
+            elapsedSeconds = timeChange / 1000;
+            gameLabels.getClockCountLabel().setText(String.valueOf(elapsedSeconds));
+            
             // revalidate/repaint so changes in spriteBlinkStep() will be sent to screen 
             sandbox.revalidate(); // revalidate for redraw
             sandbox.repaint(); // redraw screen
-        } 
+        }
+        
+        RunExit runExit = new RunExit();
     }
 }

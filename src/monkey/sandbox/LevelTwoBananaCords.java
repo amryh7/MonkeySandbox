@@ -8,8 +8,8 @@ public class LevelTwoBananaCords {
 
     // banana cords array
     protected static final Point[] levelTwoBananaPointCords = {
-        new Point(65, 60),
-        new Point(905, 585)
+        new Point(835, 585),
+        new Point(835, 515)
     };
 
     protected static Point[] getLevelCords() {

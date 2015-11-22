@@ -16,12 +16,12 @@ public class AssetsBananaLabels {
 
     public JLabel banana;
 
-    public AssetsBananaLabels() {
+    public AssetsBananaLabels(int levelSelect) {
         
         // !!!!!!!! IMPORTANT !!!!!!!!
         // you are passing the level as type in 
         AssetsLevelParams alp = new AssetsLevelParams();
-        Point[] levelBananaCords = alp.Switch(1);
+        Point[] levelBananaCords = alp.Switch(levelSelect);
         init(levelBananaCords);
     }
 
